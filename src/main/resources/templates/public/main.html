@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<style>
+    body {
+        margin: 0 auto;
+    }
+
+    .form-div {
+        margin: 50% 5% 5% 5%;
+    }
+
+    /* 전체 폼 컨테이너에 대한 스타일 */
+    div {
+        width: 300px;
+        margin: 50px auto; /* 중앙 정렬 */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        text-align: center;
+    }
+
+    /* 에러 메시지에 대한 스타일 */
+    .error-message {
+        margin-bottom: 10px;
+    }
+
+    .error-message p {
+        font-size: 14px;
+        font-weight: bold;
+        color: #ff0000;
+    }
+
+    /* 입력 필드에 대한 스타일 */
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* 버튼에 대한 스타일 */
+    button {
+        background-color: #964caf;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background-color: #7745a0;
+    }
+</style>
+
+<body>
+
+<div class="form-div">
+    <form action="/login" method="post">
+        <div th:if="${param.error != null}" class="error-message">
+            <p style="color: red">아이디나 비밀번호가 맞지 않습니다. 다시 확인해주세요.</p>
+        </div>
+
+        <input id="username" name="username" type="text" placeholder="email">
+        <input id="password" name="password" type="password" placeholder="password">
+        <button id="submit">전송</button>
+    </form>
+</div>
+
+</body>
+</html>

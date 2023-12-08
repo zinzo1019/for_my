@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>로그인</title>
+</head>
+<body>
+
+<style>
+    body {
+        margin: 0 auto;
+    }
+
+    .div-container {
+        margin: 50% 5% 5% 5%;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .error-message p {
+        font-size: 14px;
+        font-weight: bold;
+        color: #ff0000;
+    }
+
+    /* 입력 필드에 대한 스타일 */
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* 버튼에 대한 스타일 */
+    button {
+        width: 100%; /* 입력 필드와 같은 너비 */
+        background-color: #800080; /* 보라색 */
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px; /* 위쪽 여백 추가 */
+    }
+
+    button:hover {
+        background-color: #7745a0;
+    }
+
+    a {
+        font-size: 10px;
+        display: block; /* 블록 수준 요소로 변경하여 전체 너비를 차지하도록 설정 */
+        text-decoration: none; /* 밑줄 제거 */
+        color: #007bff; /* 링크 색상 설정 */
+        transition: color 0.3s ease; /* 부드러운 색상 변화 모션 */
+        margin-top: 10px; /* 링크 위쪽 여백 추가 */
+        text-align: left; /* 왼쪽 정렬 */
+        font-weight: bold; /* 굵은 글씨 */
+    }
+
+    /* 링크에 호버 효과 */
+    a:hover {
+        color: #0056b3; /* 호버 시 색상 변경 */
+    }
+
+    .error {
+        font-size: 10px; /* 글씨 크기 조절 */
+        color: #ff0000; /* 빨간색 글씨 */
+        font-weight: bold; /* 굵은 글씨 */
+        margin: 10px 0; /* 위아래 여백 조절 */
+        text-align: left; /* 왼쪽 정렬 */
+        transition: opacity 0.5s ease; /* 부드러운 페이드 인 모션 */
+    }
+
+    .login-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #000; /* 링크 텍스트 색상 설정 */
+        margin-top: 10px;
+    }
+
+    .login-link img {
+        width: 20px; /* 이미지 너비 조절 */
+        height: 20px; /* 이미지 높이 조절 */
+        margin-right: 10px; /* 이미지와 텍스트 사이 간격 조절 */
+    }
+
+    .signup-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .signup-link a {
+        text-decoration: none;
+        color: #007bff; /* 링크 텍스트 색상 설정 */
+    }
+
+    .signup-link a:hover {
+        text-decoration: underline; /* 호버 시 밑줄 추가 */
+    }
+</style>
+
+<div class="div-container">
+    <form action="/login" method="post">
+        <input id="username" name="username" type="text" placeholder="email">
+        <input id="password" name="password" type="password" placeholder="password">
+        <p th:if="${param.error != null}" class="error">아이디나 비밀번호가 맞지 않습니다. 다시 확인해주세요.</p>
+        <button id="submit">전송</button>
+        <div class="signup-link">
+        <a href="/signup">아직 회원이 아니신가요?</a>
+            <a href="/oauth2/authorization/google" class="login-link" id="google-login">
+                <img th:src="@{${IMAGE_PATH} + 'google.png'}">
+            </a>
+
+        <a href="/oauth2/authorization/naver" class="login-link" id="naver-login">
+            <img th:src="@{${IMAGE_PATH} + 'naver.jpg'}">
+        </a>
+
+        <a href="/oauth2/authorization/kakao" class="login-link" id="kakao-login">
+            <img th:src="@{${IMAGE_PATH} + 'kakao.png'}">
+        </a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+
